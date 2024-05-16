@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePageHeader extends BasePage {
+public class HomePage extends BasePage {
 
     private final By homePageButton = By.xpath(HomePageLocators.HOME_PAGE_BUTTON);
     private final By favButton = By.xpath(HomePageLocators.FAVORITE_BUTTON);
@@ -17,10 +17,12 @@ public class HomePageHeader extends BasePage {
     private final By passwordFill = By.xpath(AccountPageLocators.PASSWORD);
     private final By loginLink = By.xpath(AccountPageLocators.LOGIN_LINK);
     private final By forgotPassword = By.cssSelector(AccountPageLocators.FORGOT_PASSWORD);
+    private final By popupEmailInput = By.xpath(AccountPageLocators.POPUP_EMAIL_INPUT_FIELD);
+    private final By resetPasswordButton = By.xpath(AccountPageLocators.RESET_PASSWORD_LINK);
     private final By registration = By.cssSelector(AccountPageLocators.REGISTRATION_BUTTON);
 
 
-    public HomePageHeader(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
@@ -44,7 +46,7 @@ public class HomePageHeader extends BasePage {
         click(meinKontoButton);
     }
 
-    public void login(String username, String password){
+    public void login(String username, String password) {
 
         WebElement usernameInput = driver.findElement(login);
         usernameInput.sendKeys(username);
@@ -52,5 +54,13 @@ public class HomePageHeader extends BasePage {
         passwordInput.sendKeys(password);
         click(loginLink);
     }
+
+    public void forgotPassword(String email) {
+        click(forgotPassword);
+        WebElement usernameInput = driver.findElement(popupEmailInput);
+        usernameInput.sendKeys(email);
+        click(resetPasswordButton);
+    }
+
 
 }

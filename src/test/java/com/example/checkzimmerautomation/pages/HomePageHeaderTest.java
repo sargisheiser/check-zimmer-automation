@@ -1,8 +1,7 @@
 package com.example.checkzimmerautomation.pages;
 
 import com.check_zimmer.constants.urls.Links;
-import com.check_zimmer.pages.home_page.AccountPage;
-import com.check_zimmer.pages.home_page.HomePageHeader;
+import com.check_zimmer.pages.home_page.HomePage;
 import com.example.checkzimmerautomation.utility.TestListener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,7 +19,7 @@ public class HomePageHeaderTest extends BaseTest {
 
     @Test
     public void Logo() {
-        HomePageHeader homePage = new HomePageHeader(driver);
+        HomePage homePage = new HomePage(driver);
         homePage.getHomePage(Links.BASE_PAGE);
         homePage.homePage();
         String expectedUrl = "https://check-zimmer.de/";
@@ -29,7 +28,7 @@ public class HomePageHeaderTest extends BaseTest {
 
     @Test
     public void favButton() {
-        HomePageHeader homePage = new HomePageHeader(driver);
+        HomePage homePage = new HomePage(driver);
         homePage.getHomePage(Links.BASE_PAGE);
         homePage.favButton();
         String expectedUrl = "https://check-zimmer.de/favorites";
@@ -38,7 +37,7 @@ public class HomePageHeaderTest extends BaseTest {
 
     @Test
     public void unterkuftButton() {
-        HomePageHeader homePage = new HomePageHeader(driver);
+        HomePage homePage = new HomePage(driver);
         homePage.getHomePage(Links.BASE_PAGE);
         homePage.unterkuftButton();
         String expectedUrl = "https://check-zimmer.de/registration";
@@ -47,7 +46,7 @@ public class HomePageHeaderTest extends BaseTest {
 
     @Test
     public void meinKontoButton() {
-        HomePageHeader homePage = new HomePageHeader(driver);
+        HomePage homePage = new HomePage(driver);
         homePage.getHomePage(Links.BASE_PAGE);
         homePage.meinKontoButton();
 
@@ -60,13 +59,26 @@ public class HomePageHeaderTest extends BaseTest {
     @Test
     public void login() {
 
-        HomePageHeader homePage = new HomePageHeader(driver);
+        HomePage homePage = new HomePage(driver);
         homePage.getHomePage(Links.BASE_PAGE);
         homePage.meinKontoButton();
 
         homePage.login("test@gmail.com", "test");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.error-message")));
+        Assert.assertTrue(errorMessage.isDisplayed(), "ERROR MESSAGE is not displayed");
+    }
+
+    @Test
+    public void forgotPassword() {
+
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.meinKontoButton();
+
+        homePage.forgotPassword("");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement errorMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='modal-block modal-forgot-password show']//div[@class='error-text' and text()='Sie haben Ihre E-Mail nicht eingegeben.']")));
         Assert.assertTrue(errorMessage.isDisplayed(), "ERROR MESSAGE is not displayed");
     }
 

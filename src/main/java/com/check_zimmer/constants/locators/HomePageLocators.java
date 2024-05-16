@@ -9,5 +9,4 @@ public class HomePageLocators {
     public static final String MEIN_KONTO_BUTTON = "//a[@class='personal-area-link' and @href='#']/img[@class='normal']";
 
 
-
 }
