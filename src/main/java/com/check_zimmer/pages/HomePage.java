@@ -1,6 +1,7 @@
 package com.check_zimmer.pages;
 
 import com.check_zimmer.constants.locators.AccountPageLocators;
+import com.check_zimmer.constants.locators.FooterLocators;
 import com.check_zimmer.constants.locators.HomePageLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,15 @@ public class HomePage extends BasePage {
     private final By popupEmailInput = By.xpath(AccountPageLocators.POPUP_EMAIL_INPUT_FIELD);
     private final By resetPasswordButton = By.xpath(AccountPageLocators.RESET_PASSWORD_LINK);
     private final By registration = By.xpath(AccountPageLocators.REGISTRATION_BUTTON);
+    private final By city = By.xpath(AccountPageLocators.CITY);
+    private final By logo = By.xpath(FooterLocators.LOGO);
+    private final By agb = By.xpath(FooterLocators.AGB);
+    private final By ig = By.xpath(FooterLocators.INSTAGRAM);
+    private final By fb = By.xpath(FooterLocators.FACEBOOK);
+    private final By yb = By.xpath(FooterLocators.YOUTUBE);
+    private final By impressum = By.xpath(FooterLocators.IMPRESSUM);
+    private final By datenshutz = By.xpath(FooterLocators.DATENSHUTZ);
+
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -63,6 +73,38 @@ public class HomePage extends BasePage {
         WebElement usernameInput = driver.findElement(popupEmailInput);
         usernameInput.sendKeys(email);
         click(resetPasswordButton);
+    }
+
+    public void chooseCity() {
+        click(city);
+    }
+
+    public void footerLogo() {
+        click(logo);
+    }
+
+    public void footerFB() {
+        click(fb);
+    }
+
+    public void footerIG() {
+        click(ig);
+    }
+
+    public void footerYB() {
+        click(yb);
+    }
+
+    public void footerAGB() {
+        click(agb);
+    }
+
+    public void footerImpressum() {
+        click(impressum);
+    }
+
+    public void footerDaten() {
+        click(datenshutz);
     }
 
 

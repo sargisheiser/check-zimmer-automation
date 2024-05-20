@@ -82,4 +82,74 @@ public class HomePageHeaderTest extends BaseTest {
         Assert.assertTrue(errorMessage.isDisplayed(), "ERROR MESSAGE is not displayed");
     }
 
+    @Test
+    public void checkCity() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.chooseCity();
+        WebElement element = driver.findElement(By.xpath("//h1[@class='list-title' and text()='Monteurunterkünfte in Leipzig']"));
+        Assert.assertTrue(element.isDisplayed(), "The element is not displayed on the page.");
+    }
+
+    @Test
+    public void footerLogo() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.footerLogo();
+        String expectedUrl = "https://check-zimmer.de/";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+    }
+
+    @Test
+    public void footerFB() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.footerFB();
+        Assert.assertTrue(driver.getCurrentUrl().contains("facebook.com"));
+    }
+
+    @Test
+    public void footerIG() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.footerIG();
+        Assert.assertTrue(driver.getCurrentUrl().contains("instagram.com"));
+    }
+
+    @Test
+    public void footerYB() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.footerYB();
+        Assert.assertTrue(driver.getCurrentUrl().contains("youtube.com"));
+    }
+
+    @Test
+    public void footerAGB() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.footerAGB();
+        String expectedUrl = "https://check-zimmer.de/agb";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+    }
+
+    @Test
+    public void footerImpressum() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.footerImpressum();
+        String expectedUrl = "https://check-zimmer.de/impressum";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+    }
+
+
+    @Test
+    public void footerDaten() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getHomePage(Links.BASE_PAGE);
+        homePage.footerDaten();
+        String expectedUrl = "https://check-zimmer.de/datenschutz";
+        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+    }
+
 }
