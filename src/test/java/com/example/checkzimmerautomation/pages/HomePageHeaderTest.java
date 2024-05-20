@@ -1,7 +1,7 @@
 package com.example.checkzimmerautomation.pages;
 
 import com.check_zimmer.constants.urls.Links;
-import com.check_zimmer.pages.home_page.HomePage;
+import com.check_zimmer.pages.HomePage;
 import com.example.checkzimmerautomation.utility.TestListener;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

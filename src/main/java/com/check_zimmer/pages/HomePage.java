@@ -1,8 +1,7 @@
-package com.check_zimmer.pages.home_page;
+package com.check_zimmer.pages;
 
 import com.check_zimmer.constants.locators.AccountPageLocators;
 import com.check_zimmer.constants.locators.HomePageLocators;
-import com.check_zimmer.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,8 +18,7 @@ public class HomePage extends BasePage {
     private final By forgotPassword = By.cssSelector(AccountPageLocators.FORGOT_PASSWORD);
     private final By popupEmailInput = By.xpath(AccountPageLocators.POPUP_EMAIL_INPUT_FIELD);
     private final By resetPasswordButton = By.xpath(AccountPageLocators.RESET_PASSWORD_LINK);
-    private final By registration = By.cssSelector(AccountPageLocators.REGISTRATION_BUTTON);
-
+    private final By registration = By.xpath(AccountPageLocators.REGISTRATION_BUTTON);
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -44,6 +42,11 @@ public class HomePage extends BasePage {
 
     public void meinKontoButton() {
         click(meinKontoButton);
+    }
+
+    public void registrationButton() {
+        click(meinKontoButton);
+        click(registration);
     }
 
     public void login(String username, String password) {
